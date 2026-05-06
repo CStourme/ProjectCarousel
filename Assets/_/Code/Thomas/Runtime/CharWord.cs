@@ -8,38 +8,35 @@ namespace Thomas.Runtime
         #region Publics
 
         public string m_word;
-        public TMP_Text[] m_text;
+
+        [Header("References")]
+        public Transform m_parent;
+        public TMP_Text m_letterPrefab;
 
         #endregion
-        
+
+
         #region Unity API
 
         private void Start()
         {
-            CharText();
+            CreateLetters();
         }
-        
+
         #endregion
-        
-        
+
+
         #region Utils
 
-        private void CharText()
+        private void CreateLetters()
         {
-            int length = Mathf.Min(m_word.Length, m_text.Length);
-
-            for (int i = 0; i < length; i++)
+            foreach (char c in m_word)
             {
-                m_text[i].text = m_word[i].ToString();
+                TMP_Text letter = Instantiate(m_letterPrefab, m_parent);
+
+                letter.text = c.ToString();
             }
         }
-        
-        #endregion
-        
-        
-        #region Privates and Protected
-
-        
 
         #endregion
     }
