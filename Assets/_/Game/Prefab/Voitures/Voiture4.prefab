@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2922089728724524152}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 4, y: 2, z: 1.5}
   m_ConstrainProportionsScale: 0
@@ -125,6 +125,7 @@ GameObject:
   - component: {fileID: 2585440961189618753}
   - component: {fileID: 1351619718843234867}
   - component: {fileID: 3818686098438969780}
+  - component: {fileID: 7895036586916546670}
   m_Layer: 0
   m_Name: Symbole
   m_TagString: Untagged
@@ -225,3 +226,16 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7895036586916546670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3132351411354839596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe92cc601a6036246b08171faefb5e4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Runtime.Bunyamin::Runtime.Bunyamin.ValidationSymbol
+  m_found: {fileID: 5756051429453579785, guid: 08018de822465414e9f595ac94399851, type: 3}
