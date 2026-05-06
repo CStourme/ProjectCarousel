@@ -1,6 +1,7 @@
-using UnityEngine;
+using UnityEngine; 
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 namespace FixPoint.Runtime
 {
@@ -8,40 +9,51 @@ namespace FixPoint.Runtime
     {
         #region Public
         
-        [Header ("Configuration du Raycast (Laser de détection)")]
+        [Header ("RayCast Configuration")]
+        [SerializeField] private float distance = 20f;
+        [SerializeField] private LayerMask m_touchableTarget; 
+        [SerializeField] private QueryTriggerInteraction m_TriggerInteraction; 
         
-        public float distance = 20f;
+        [Header("UI")]
+        public Text timerText;
+        public Text foundText;
 
+        [Header("Effets")]
+        [SerializeField] private ParticleSystem smokeEffect;
 
-        public LayerMask m_touchableTarget; 
+        [Header("Timer")]
+        [SerializeField] private float timerDuration = 60f;
 
-        // Permet de choisir si le Raycast touche les triggers
-        public QueryTriggerInteraction m_TriggerInteraction; 
-        
         #endregion
         
+        float currentTime;
+        bool isCounting = true;
+
         #region Unity API
+
+        public void Start()
+        {
+            currentTime = timerDuration;
+            foundText.gameObject.SetActive(false);
+        }
 
         public void Update()
         {
-            // origine = position de la caméra
-            // direction = là où la caméra regarde
+            HandleTimer();
+
             Ray ray = new Ray(transform.position, transform.forward);
-
-            // Variable qui va contenir les infos de l’objet touché
             RaycastHit hit;
-
 
             if (Physics.Raycast(ray, out hit, distance, m_touchableTarget, m_TriggerInteraction))
             {
                 Debug.Log("Objet détecté : " + hit.collider.name);
 
-                if (hit.collider.gameObject.layer == m_touchableTarget)
+                if (hit.collider.CompareTag("Player"))
                 {
                     Debug.Log("Symbole trouvé : " + hit.collider.name);
 
+                    TriggerEffect(hit);
                 }
-                
             }
             else
             {
@@ -53,7 +65,63 @@ namespace FixPoint.Runtime
         
         #region Main Methods
         
-        
+        void HandleTimer()
+        {
+            if (!isCounting) return;
+
+            currentTime -= Time.deltaTime;
+
+            if (currentTime <= 0)
+            {
+                currentTime = 0;
+                isCounting = false;
+                Debug.Log("Elapsed Time !");
+            }
+
+            timerText.text = "Time : " + Mathf.Ceil(currentTime).ToString();
+        }
+
+        public void TriggerEffect(RaycastHit hit)
+        {
+            float distanceToObject = Vector3.Distance(transform.position, hit.collider.transform.position);
+
+            if (distanceToObject < 3f)
+            {
+                if (!smokeEffect.isPlaying)
+                    smokeEffect.Play();
+            }
+            else
+            {
+                if (smokeEffect.isPlaying)
+                    smokeEffect.Stop();
+            }
+
+            StartCoroutine(ShowFoundText());
+        }
+
+        IEnumerator ShowFoundText()
+        {
+            foundText.gameObject.SetActive(true);
+
+            Vector3 startPos = foundText.transform.position;
+            Vector3 endPos = startPos + new Vector3(0, 50, 0);
+
+            float duration = 1f;
+            float elapsed = 0f;
+
+            while (elapsed < duration)
+            {
+                foundText.transform.position = Vector3.Lerp(startPos, endPos, elapsed / duration);
+                elapsed += Time.deltaTime;
+                yield return null;
+            }
+
+            yield return new WaitForSeconds(1f);
+
+            foundText.gameObject.SetActive(false);
+            foundText.transform.position = startPos;
+        }
+
         #endregion
     }
 }
