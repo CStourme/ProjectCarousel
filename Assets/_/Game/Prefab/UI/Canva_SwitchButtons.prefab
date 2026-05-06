@@ -277,7 +277,7 @@ GameObject:
   - component: {fileID: 2777859434138313007}
   - component: {fileID: 6705493880999531884}
   m_Layer: 5
-  m_Name: SwitchButtons
+  m_Name: Canva_SwitchButtons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
