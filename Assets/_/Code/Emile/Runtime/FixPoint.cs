@@ -1,127 +1,45 @@
-using UnityEngine; 
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.UI;
+using UnityEngine;
+using TMPro;
 
 namespace FixPoint.Runtime
 {
     public class FixPoint : MonoBehaviour
     {
-        #region Public
-        
-        [Header ("RayCast Configuration")]
-        [SerializeField] private float distance = 20f;
-        [SerializeField] private LayerMask m_touchableTarget; 
-        [SerializeField] private QueryTriggerInteraction m_TriggerInteraction; 
-        
-        [Header("UI")]
-        public Text timerText;
-        public Text foundText;
+        [SerializeField] private LayerMask layermask;
+        [SerializeField] private TMP_Text detectionText;
 
-        [Header("Effets")]
-        [SerializeField] private ParticleSystem smokeEffect;
+        private RaycastHit hitinfo;
 
-        [Header("Timer")]
-        [SerializeField] private float timerDuration = 60f;
-
-        #endregion
-        
-        float currentTime;
-        bool isCounting = true;
-
-        #region Unity API
-
-        public void Start()
+        void Update()
         {
-            currentTime = timerDuration;
-            foundText.gameObject.SetActive(false);
-        }
+            Vector3 direction = transform.forward;
 
-        public void Update()
-        {
-            HandleTimer();
-
-            Ray ray = new Ray(transform.position, transform.forward);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit, distance, m_touchableTarget, m_TriggerInteraction))
+            if (Physics.Raycast(transform.position, direction, out hitinfo, 10f, layermask))
             {
-                Debug.Log("Objet détecté : " + hit.collider.name);
+                detectionText.text = "Object detected : " + hitinfo.collider.name;
+                detectionText.color = Color.green;
 
-                if (hit.collider.CompareTag("Player"))
-                {
-                    Debug.Log("Symbole trouvé : " + hit.collider.name);
+                Debug.Log("Object detected : " + hitinfo.collider.name);
 
-                    TriggerEffect(hit);
-                }
+                Debug.DrawRay(
+                    transform.position,
+                    direction * hitinfo.distance,
+                    Color.red
+                );
             }
             else
             {
-                Debug.Log("Aucun objet détecté");
+                detectionText.text = "No objects detected";
+                detectionText.color = Color.red;
+
+                Debug.Log("No objects detected");
+
+                Debug.DrawRay(
+                    transform.position,
+                    direction * 10f,
+                    Color.green
+                );
             }
         }
-        
-        #endregion
-        
-        #region Main Methods
-        
-        void HandleTimer()
-        {
-            if (!isCounting) return;
-
-            currentTime -= Time.deltaTime;
-
-            if (currentTime <= 0)
-            {
-                currentTime = 0;
-                isCounting = false;
-                Debug.Log("Elapsed Time !");
-            }
-
-            timerText.text = "Time : " + Mathf.Ceil(currentTime).ToString();
-        }
-
-        public void TriggerEffect(RaycastHit hit)
-        {
-            float distanceToObject = Vector3.Distance(transform.position, hit.collider.transform.position);
-
-            if (distanceToObject < 3f)
-            {
-                if (!smokeEffect.isPlaying)
-                    smokeEffect.Play();
-            }
-            else
-            {
-                if (smokeEffect.isPlaying)
-                    smokeEffect.Stop();
-            }
-
-            StartCoroutine(ShowFoundText());
-        }
-
-        IEnumerator ShowFoundText()
-        {
-            foundText.gameObject.SetActive(true);
-
-            Vector3 startPos = foundText.transform.position;
-            Vector3 endPos = startPos + new Vector3(0, 50, 0);
-
-            float duration = 1f;
-            float elapsed = 0f;
-
-            while (elapsed < duration)
-            {
-                foundText.transform.position = Vector3.Lerp(startPos, endPos, elapsed / duration);
-                elapsed += Time.deltaTime;
-                yield return null;
-            }
-
-            yield return new WaitForSeconds(1f);
-
-            foundText.gameObject.SetActive(false);
-            foundText.transform.position = startPos;
-        }
-
-        #endregion
     }
 }
