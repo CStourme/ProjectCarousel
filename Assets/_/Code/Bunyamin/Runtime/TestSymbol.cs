@@ -12,6 +12,7 @@ namespace Runtime.Bunyamin
 
         private void Start()
         {
+            _charWord = FindFirstObjectByType<CharWord>();
             ControlCar();
         }
 
