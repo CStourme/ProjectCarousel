@@ -1,3 +1,4 @@
+using Thomas.Runtime;
 using UnityEngine;
 
 namespace Runtime.Bunyamin
@@ -22,6 +23,7 @@ namespace Runtime.Bunyamin
                 if (m_objects[i])
                 {
                     m_objects[i].GetComponentInChildren<ValidationSymbol>().SetFound(false);
+                    _charWord.RandomizerLetterDisplay();
                 }
                 
             }
@@ -34,6 +36,7 @@ namespace Runtime.Bunyamin
 
         private ValidationSymbol m_found;
         [SerializeField] private GameObject[]  m_objects;
+        private CharWord _charWord;
 
         #endregion
     }

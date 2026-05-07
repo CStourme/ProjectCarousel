@@ -1,9 +1,8 @@
 {
-    "name": "Runtime.Bunyamin",
-    "rootNamespace": "Runtime.Bunyamin",
+    "name": "Thomas.Runtime",
+    "rootNamespace": "Thomas.Runtime",
     "references": [
-        "GUID:2bafac87e7f4b9b418d9448d219b01ab",
-        "GUID:e7a3992f1d68d3848811e1a9c7ea958e"
+        "GUID:6055be8ebefd69e48b49212b09b47b2f"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
