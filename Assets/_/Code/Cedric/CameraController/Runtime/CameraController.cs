@@ -184,7 +184,7 @@ namespace CameraController.Runtime
                 float mouseInputY = Mouse.current.delta.ReadValue().y;
                 if (mouseInputY != 0)
                 {
-                    currentFOV -= mouseInputY * zoomSpeed;
+                    currentFOV -= mouseInputY * zoomSpeed * -1;
                     currentFOV = Mathf.Clamp(currentFOV, minFOV, maxFOV);
                     ApplyFOV();
                 }
