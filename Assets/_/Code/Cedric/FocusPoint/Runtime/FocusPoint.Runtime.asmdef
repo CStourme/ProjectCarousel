@@ -1,9 +1,9 @@
 {
-    "name": "Runtime.Bunyamin",
-    "rootNamespace": "Runtime.Bunyamin",
+    "name": "FocusPoint.Runtime",
+    "rootNamespace": "FocusPoint.Runtime",
     "references": [
-        "GUID:2bafac87e7f4b9b418d9448d219b01ab",
-        "GUID:e7a3992f1d68d3848811e1a9c7ea958e"
+        "GUID:fb37b34b9ea6796488a1477c31b24b2e",
+        "GUID:75469ad4d38634e559750d17036d5f7c"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
