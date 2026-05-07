@@ -9,7 +9,7 @@ namespace Thomas.Runtime
     {
         #region Publics
 
-        public string m_word;
+        public string[] m_word;
 
         [Header("References")]
         public Transform m_parent;
@@ -22,6 +22,7 @@ namespace Thomas.Runtime
 
         private void Awake()
         {
+            PickRandomWord();
             CreateLetters();
         }
 
@@ -34,7 +35,6 @@ namespace Thomas.Runtime
         {
             if (_hiddenLetters.Count == 0)
             {
-                Debug.Log("Toutes les lettres sont affichées.");
                 return;
             }
 
@@ -54,7 +54,7 @@ namespace Thomas.Runtime
 
         private void CreateLetters()
         {
-            foreach (char c in m_word)
+            foreach (char c in _selectedWord)
             {
                 TMP_Text letter = Instantiate(m_letterPrefab, m_parent);
 
@@ -65,12 +65,24 @@ namespace Thomas.Runtime
             }
         }
 
+        private void PickRandomWord()
+        {
+            foreach (char c in _selectedWord)
+            {
+                if (m_word == null || m_word.Length == 0 ) return;
+                
+                int index = Random.Range(0, m_word.Length);
+                _selectedWord = m_word[index];
+            }
+        }
+
         #endregion
 
 
         #region Private and Protected
 
         private readonly List<TMP_Text> _hiddenLetters = new();
+        private string _selectedWord;
 
         #endregion
     }
