@@ -1,5 +1,9 @@
+using System.Collections.Generic;
+using Runtime.Bunyamin;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 namespace Thomas.Runtime
 {
@@ -18,9 +22,31 @@ namespace Thomas.Runtime
 
         #region Unity API
 
-        private void Start()
+        private void Awake()
         {
             CreateLetters();
+        }
+
+        #endregion
+
+
+        #region Main Methods
+
+        public void RandomizerLetterDisplay()
+        {
+            if (_hiddenLetters.Count == 0)
+            {
+                Debug.Log("Toutes les lettres sont affichées.");
+                return;
+            }
+
+            int randomIndex = Random.Range(0, _hiddenLetters.Count);
+
+            TMP_Text randomLetter = _hiddenLetters[randomIndex];
+
+            randomLetter.gameObject.SetActive(true);
+
+            _hiddenLetters.RemoveAt(randomIndex);
         }
 
         #endregion
@@ -35,8 +61,18 @@ namespace Thomas.Runtime
                 TMP_Text letter = Instantiate(m_letterPrefab, m_parent);
 
                 letter.text = c.ToString();
+                letter.gameObject.SetActive(false);
+
+                _hiddenLetters.Add(letter);
             }
         }
+
+        #endregion
+
+
+        #region Private and Protected
+
+        private readonly List<TMP_Text> _hiddenLetters = new();
 
         #endregion
     }
