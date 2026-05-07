@@ -22,7 +22,8 @@ namespace Runtime.Bunyamin
         public void ControlCar()
         {
             m_found = FindObjectsByType<ValidationSymbol>(FindObjectsSortMode.None);
-
+            Debug.Log(m_found.Length);
+            
             for (int i = 0; i < m_found.Length; i++)
             {
                 m_found[i].SetFound(false);
