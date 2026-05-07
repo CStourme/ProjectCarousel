@@ -1824,6 +1824,34 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3528041337136276252, guid: 91fc8ad96ab1989419f243c29dbe58b5, type: 3}
+      propertyPath: m_word.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3528041337136276252, guid: 91fc8ad96ab1989419f243c29dbe58b5, type: 3}
+      propertyPath: 'm_word.Array.data[0]'
+      value: CARS
+      objectReference: {fileID: 0}
+    - target: {fileID: 3528041337136276252, guid: 91fc8ad96ab1989419f243c29dbe58b5, type: 3}
+      propertyPath: 'm_word.Array.data[1]'
+      value: LUCK
+      objectReference: {fileID: 0}
+    - target: {fileID: 3528041337136276252, guid: 91fc8ad96ab1989419f243c29dbe58b5, type: 3}
+      propertyPath: 'm_word.Array.data[2]'
+      value: GOOD
+      objectReference: {fileID: 0}
+    - target: {fileID: 3528041337136276252, guid: 91fc8ad96ab1989419f243c29dbe58b5, type: 3}
+      propertyPath: 'm_word.Array.data[3]'
+      value: ICON
+      objectReference: {fileID: 0}
+    - target: {fileID: 3528041337136276252, guid: 91fc8ad96ab1989419f243c29dbe58b5, type: 3}
+      propertyPath: 'm_word.Array.data[4]'
+      value: TIRE
+      objectReference: {fileID: 0}
+    - target: {fileID: 3528041337136276252, guid: 91fc8ad96ab1989419f243c29dbe58b5, type: 3}
+      propertyPath: 'm_word.Array.data[5]'
+      value: GEAR
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

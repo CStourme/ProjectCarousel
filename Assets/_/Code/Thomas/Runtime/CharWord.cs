@@ -66,14 +66,11 @@ namespace Thomas.Runtime
         }
 
         private void PickRandomWord()
-        {
-            foreach (char c in _selectedWord)
-            {
-                if (m_word == null || m_word.Length == 0 ) return;
+        { 
+            if (m_word == null || m_word.Length == 0 ) return;
                 
-                int index = Random.Range(0, m_word.Length);
-                _selectedWord = m_word[index];
-            }
+            int index = Random.Range(0, m_word.Length);
+            _selectedWord = m_word[index];
         }
 
         #endregion
