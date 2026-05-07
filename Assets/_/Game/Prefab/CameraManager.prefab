@@ -1063,7 +1063,7 @@ Transform:
   m_GameObject: {fileID: 2829489565537357863}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: -10}
+  m_LocalPosition: {x: 0, y: 2, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1078,7 +1078,7 @@ Camera:
   m_GameObject: {fileID: 2829489565537357863}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -1225,19 +1225,25 @@ MonoBehaviour:
   _autoCamera: {fileID: 6574168814023221912}
   _manualOrbitCenter: {x: 0, y: 0, z: 0}
   _autoOrbitCenter: {x: 0, y: 0, z: 0}
-  lookAtLerpSpeed: 5
-  centerLerpSpeed: 5
-  manualRotationSpeed: 0.5
+  lookAtLerpSpeed: 4
+  centerLerpSpeed: 1
+  manualRotationSpeed: 0.2
   minVerticalAngle: -15
-  maxVerticalAngle: 70
+  maxVerticalAngle: 75
   _isAutoActive: 0
-  autoRadius: 10
-  autoHeight: 3
-  autoSpeed: 0.35
-  zoomSpeed: 0.3
+  autoRadius: 7
+  autoHeight: 2.5
+  autoSpeed: 0.3
+  autoOrbitTiltX: 14
+  dynamicFOVAmount: 15
+  dynamicFOVAmountRandomness: 5
+  dynamicFOVInterval: 10
+  dynamicFOVRandomness: 3
+  dynamicFOVSmoothness: 0.3
+  zoomSpeed: 0.4
   minFOV: 5
-  maxFOV: 70
-  currentFOV: 60
+  maxFOV: 60
+  currentFOV: 45
 --- !u!1 &4163008354696232767
 GameObject:
   m_ObjectHideFlags: 0
@@ -1883,7 +1889,7 @@ Camera:
   m_GameObject: {fileID: 6574168814023221912}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
