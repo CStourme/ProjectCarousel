@@ -1,28 +1,44 @@
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 
 namespace FixPoint.Runtime
 {
-    public class FixPoint : MonoBehaviour
+    public class RaycastTimer : MonoBehaviour
     {
         [SerializeField] private LayerMask obstaclemask;
         [SerializeField] private LayerMask layermask;
-        [SerializeField] private TMP_Text detectionText;
+        [SerializeField] private Slider scanSlider;
 
         private RaycastHit hitinfo;
+
+        private float timer;
+        private float maxTime = 3f;
+        
+        
+        void Start()
+        {
+            scanSlider.gameObject.SetActive(false);
+        }
 
         void Update()
         {
             Vector3 direction = transform.forward;
-            
             if (Physics.Raycast(transform.position, direction, out hitinfo, 10f, obstaclemask)) return;
 
             if (Physics.Raycast(transform.position, direction, out hitinfo, 10f, layermask))
             {
-                detectionText.text = "Object detected : " + hitinfo.collider.name;
-                detectionText.color = Color.green;
+                scanSlider.gameObject.SetActive(true);
 
-                Debug.Log("Object detected : " + hitinfo.collider.name);
+                timer += Time.deltaTime;
+
+                scanSlider.value = timer;
+
+                Debug.Log("Scan in progress");
+
+                if (timer >= maxTime)
+                {
+                    Debug.Log("Object scanned !");
+                }
 
                 Debug.DrawRay(
                     transform.position,
@@ -32,10 +48,13 @@ namespace FixPoint.Runtime
             }
             else
             {
-                detectionText.text = "No objects detected";
-                detectionText.color = Color.red;
+                timer = 0;
 
-                Debug.Log("No objects detected");
+                scanSlider.value = 0;
+
+                scanSlider.gameObject.SetActive(false);
+
+                Debug.Log("No objects scanned");
 
                 Debug.DrawRay(
                     transform.position,
@@ -43,7 +62,6 @@ namespace FixPoint.Runtime
                     Color.green
                 );
             }
-            
         }
     }
 }
