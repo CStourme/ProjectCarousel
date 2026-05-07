@@ -47,7 +47,6 @@ GameObject:
   - component: {fileID: 3051901287001842959}
   - component: {fileID: 8478257299851238372}
   - component: {fileID: 5844024108652775111}
-  - component: {fileID: 908173720242266275}
   m_Layer: 5
   m_Name: Symbol
   m_TagString: Untagged
@@ -113,19 +112,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &908173720242266275
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6486663527578864594}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe92cc601a6036246b08171faefb5e4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Runtime.Bunyamin::Runtime.Bunyamin.ValidationSymbol
-  m_found: {fileID: 5756051429453579785, guid: 08018de822465414e9f595ac94399851, type: 3}
 --- !u!1001 &6561163994524093419
 PrefabInstance:
   m_ObjectHideFlags: 0
