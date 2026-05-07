@@ -97,7 +97,6 @@ namespace CameraController.Runtime
             }
             else 
             {
-                // "Si je quitte le mode auto, je ramène doucement le FOV à sa valeur normale."
                 _targetDynamicOffset = 0f;
                 _dynamicFOVOffset = Mathf.Lerp(_dynamicFOVOffset, 0f, Time.deltaTime * dynamicFOVSmoothness);
                 ApplyFOV();
@@ -120,49 +119,27 @@ namespace CameraController.Runtime
 
         private void HandleDynamicFOV()
         {
-            // "Je fais défiler mon timer interne."
             _nextPulseTimer -= Time.deltaTime;
 
-            // "Quand le timer expire, c'est le moment de créer une nouvelle variation."
             if (_nextPulseTimer <= 0f)
             {
-                // "Étape 1 : Le Signe (Positif ou Négatif)."
-                // "Je tire à pile ou face : soit je zoom (négatif), soit je dézoom (positif)."
-                // "Random.value renvoie un chiffre entre 0 et 1. Si c'est > 0.5, c'est 1, sinon -1."
                 float randomSign = (Random.value > 0.5f) ? 1f : -1f;
-
-                // "Étape 2 : L'Amplitude."
-                // "Je calcule une force aléatoire basée sur mes paramètres exposés."
                 float randomForce = dynamicFOVAmount + Random.Range(0f, dynamicFOVAmountRandomness);
-
-                // "Étape 3 : La Cible."
-                // "Je multiplie ma force par mon signe pour savoir vers où mon Lerp doit se diriger."
                 _targetDynamicOffset = randomSign * randomForce;
-
-                // "Étape 4 : Le Reset."
-                // "Je relance le chrono pour que l'action ne se répète pas tout de suite."
                 ResetPulseTimer();
             }
 
-            // "Étape 5 : Le Retour au Repos."
-            // "Si je suis arrivé très près de ma cible (le pic du zoom ou du dézoom),"
-            // "je change immédiatement ma cible vers 0 pour entamer le retour fluide."
             if (Mathf.Abs(_dynamicFOVOffset - _targetDynamicOffset) < 0.05f)
             {
                 _targetDynamicOffset = 0f;
             }
 
-            // "Étape 6 : L'Application du mouvement."
-            // "Je fais glisser ma valeur actuelle vers ma cible avec un Lerp pour que ce soit doux."
             _dynamicFOVOffset = Mathf.Lerp(_dynamicFOVOffset, _targetDynamicOffset, Time.deltaTime * dynamicFOVSmoothness);
-
-            // "J'applique le résultat final aux FOV des caméras."
             ApplyFOV();
         }
 
         private void ResetPulseTimer()
         {
-            // "Je définis un délai aléatoire pour que le rythme de respiration ne soit pas prévisible."
             _nextPulseTimer = dynamicFOVInterval + Random.Range(0f, dynamicFOVRandomness);
         }
 
@@ -177,26 +154,46 @@ namespace CameraController.Runtime
         #endregion
         
         #region Logique de Zoom
+
         private void HandleZoom()
         {
-            if (Mouse.current.rightButton.isPressed)
+            // "Je vérifie d'abord si je suis en train de faire un drag avec le bouton du milieu."
+            if (Mouse.current.middleButton.isPressed)
             {
+                // "Je récupère le mouvement vertical de la souris."
                 float mouseInputY = Mouse.current.delta.ReadValue().y;
+                
                 if (mouseInputY != 0)
                 {
+                    // "Si je bouge la souris, je modifie le FOV."
+                    // "Je garde le zoomSpeed pour la sensibilité."
                     currentFOV -= mouseInputY * zoomSpeed * -1;
-                    currentFOV = Mathf.Clamp(currentFOV, minFOV, maxFOV);
-                    ApplyFOV();
                 }
             }
+
+            // "--- NOUVEAU : GESTION DE LA MOLETTE ---"
+            // "Je récupère la valeur de rotation de la molette (Vector2.y)."
+            float scrollInput = Mouse.current.scroll.ReadValue().y;
+
+            if (scrollInput != 0)
+            {
+                // "Si la molette tourne, j'ajuste mon FOV."
+                // "Attention : la valeur de scroll est souvent grande (ex: 120), alors je la multiplie par un petit facteur 
+                // pour ne pas avoir un zoom trop violent par rapport au mouvement de la souris."
+                currentFOV -= scrollInput * (zoomSpeed * 5f);
+            }
+
+            // "Une fois que j'ai calculé mon nouveau FOV (via drag OU molette), je m'assure de ne pas sortir des bornes."
+            currentFOV = Mathf.Clamp(currentFOV, minFOV, maxFOV);
+            
+            // "Et enfin, j'applique cette nouvelle valeur aux caméras."
+            ApplyFOV();
         }
 
         private void ApplyFOV()
         {
-            // "Pour la caméra manuelle, je reste sur le FOV pur de l'utilisateur."
             if (_manualCamComponent != null) _manualCamComponent.fieldOfView = currentFOV;
 
-            // "Pour l'auto, je combine le réglage de base et ma micro-variation organique."
             if (_autoCamComponent != null) 
             {
                 _autoCamComponent.fieldOfView = currentFOV + _dynamicFOVOffset;
@@ -210,7 +207,7 @@ namespace CameraController.Runtime
         {
             _manualPivot.transform.position = _manualOrbitCenter;
 
-            if (Mouse.current.leftButton.isPressed)
+            if (Mouse.current.rightButton.isPressed)
             {
                 Vector2 delta = Mouse.current.delta.ReadValue();
                 _manualPivot.transform.Rotate(Vector3.up, delta.x * manualRotationSpeed, Space.World);
