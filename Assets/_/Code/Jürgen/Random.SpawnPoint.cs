@@ -1,4 +1,5 @@
 using System;
+using Thomas.Runtime;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -9,6 +10,8 @@ public class RandomSpawner : MonoBehaviour
     public Transform[] spawnPoints;
 
     public Image m_image;
+    
+    public CharWord m_charWord;
 
     void Awake()
     {
@@ -17,7 +20,12 @@ public class RandomSpawner : MonoBehaviour
             SpawnItem();
         }
     }
-    
+
+    private void Update()
+    {
+        CheckItemState();
+    }
+
     void SpawnItem()
     {
         if (spawnPoints.Length == 0) return;
@@ -40,15 +48,36 @@ public class RandomSpawner : MonoBehaviour
 
     public void FoundItem()
     {
+        if (_itemFound) return;
+        
         _itemFound = true;
 
         if (_currentItem)
         {
             _currentItem.SetActive(false);
         }
+
+        if (m_charWord)
+        {
+            m_charWord.RandomizerLetterDisplay();
+        }
+    }
+
+    private void CheckItemState()
+    {
+        if (!_currentItem || _itemFound) return;
+        
+        bool isActive = _currentItem.activeInHierarchy;
+
+        if (_wasActive && !isActive)
+        {
+            FoundItem();
+        }
+        
+        _wasActive = isActive;
     }
     
     private GameObject _currentItem;
     private bool _itemFound;
-    
+    private bool _wasActive;
 }
