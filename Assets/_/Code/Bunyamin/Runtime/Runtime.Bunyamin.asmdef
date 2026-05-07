@@ -2,7 +2,8 @@
     "name": "Runtime.Bunyamin",
     "rootNamespace": "Runtime.Bunyamin",
     "references": [
-        "GUID:2bafac87e7f4b9b418d9448d219b01ab"
+        "GUID:2bafac87e7f4b9b418d9448d219b01ab",
+        "GUID:e7a3992f1d68d3848811e1a9c7ea958e"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

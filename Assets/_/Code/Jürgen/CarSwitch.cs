@@ -23,13 +23,14 @@ public class CarSwitch : MonoBehaviour
     {
         _Index += direction;
 
-        if (_Index > 3)
+        if (_Index >= m_ListeVoitures.Length)
         {
             _Index = 0;
         }
         else if (_Index < 0)
         {
-            _Index = 3;
+           
+            _Index = m_ListeVoitures.Length -1;
         }
 
         ActualiserAffichage();

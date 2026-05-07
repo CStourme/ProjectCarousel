@@ -1,0 +1,17 @@
+{
+    "name": "FocusPoint.Runtime",
+    "rootNamespace": "FocusPoint.Runtime",
+    "references": [
+        "GUID:fb37b34b9ea6796488a1477c31b24b2e",
+        "GUID:75469ad4d38634e559750d17036d5f7c"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

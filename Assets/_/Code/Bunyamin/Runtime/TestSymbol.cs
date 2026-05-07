@@ -1,3 +1,4 @@
+using Thomas.Runtime;
 using UnityEngine;
 
 namespace Runtime.Bunyamin
@@ -7,24 +8,28 @@ namespace Runtime.Bunyamin
         
         
         #region Unity API
-        
-        
-        
+
+        private void Start()
+        {
+            _charWord = FindFirstObjectByType<CharWord>();
+        }
+
         #endregion
         
         
-        #region Utils
+        #region Main Methods
 
-        private void ControlCar()
+        public void ControlCar()
         {
-            for (int i = 0; i < m_objects.Length; i++)
+            m_found = FindObjectsByType<ValidationSymbol>(FindObjectsSortMode.None);
+            Debug.Log(m_found.Length);
+            
+            for (int i = 0; i < m_found.Length; i++)
             {
-                if (m_objects[i])
-                {
-                    m_objects[i].GetComponentInChildren<ValidationSymbol>().SetFound(false);
-                }
-                
+                m_found[i].SetFound(false);
             }
+            
+            _charWord.RandomizerLetterDisplay();
         }
         
         #endregion
@@ -32,8 +37,8 @@ namespace Runtime.Bunyamin
         
         #region  Private
 
-        private ValidationSymbol m_found;
-        [SerializeField] private GameObject[]  m_objects;
+        private ValidationSymbol[] m_found;
+        private CharWord _charWord;
 
         #endregion
     }
