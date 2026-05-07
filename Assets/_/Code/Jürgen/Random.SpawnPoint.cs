@@ -12,7 +12,10 @@ public class RandomSpawner : MonoBehaviour
 
     void Awake()
     {
-        SpawnItem();
+        if (!_itemFound)
+        {
+            SpawnItem();
+        }
     }
     
     void SpawnItem()
@@ -28,10 +31,24 @@ public class RandomSpawner : MonoBehaviour
 
     public bool IsItemActive()
     {
+        if(_itemFound) return false;
+        
         if (!_currentItem) return false;
 
-        return _currentItem.activeSelf;
+        return _currentItem.activeInHierarchy;
+    }
+
+    public void FoundItem()
+    {
+        _itemFound = true;
+
+        if (_currentItem)
+        {
+            _currentItem.SetActive(false);
+        }
     }
     
     private GameObject _currentItem;
+    private bool _itemFound;
+    
 }
