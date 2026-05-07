@@ -1,4 +1,3 @@
-using System;
 using Thomas.Runtime;
 using UnityEngine;
 
@@ -13,15 +12,14 @@ namespace Runtime.Bunyamin
         private void Start()
         {
             _charWord = FindFirstObjectByType<CharWord>();
-            ControlCar();
         }
 
         #endregion
         
         
-        #region Utils
+        #region Main Methods
 
-        private void ControlCar()
+        public void ControlCar()
         {
             m_found = FindObjectsByType<ValidationSymbol>(FindObjectsSortMode.None);
 
