@@ -8,7 +8,7 @@ namespace CameraController.Runtime
 
         [Header("Réglages du Bruit Fractal (fBm)")]
         [Tooltip("Nombre de couches de bruit. Plus c'est élevé, plus c'est 'nerveux' et détaillé.")]
-        [Range(1, 8)] public int octaves = 4;
+        [Range(1, 8)] public int octaves = 3;
         
         [Tooltip("Vitesse globale de l'effet.")]
         public float noiseSpeed = 0.5f;

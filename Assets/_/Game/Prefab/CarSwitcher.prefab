@@ -46,6 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CarSwitch
   m_ListeVoitures:
   - {fileID: 7641486699669872689, guid: 0e666b1b9ac705b47b2ceffd08ea8288, type: 3}
-  - {fileID: 2475982353190807873, guid: 774517c8fc32a414083a05fa6f6e693d, type: 3}
-  - {fileID: 22695752616923635, guid: 9dc71f6b4d1e1fa4aa98188dc148a6d5, type: 3}
-  - {fileID: 2922089728724524152, guid: 05504fff48f6b364aafd65bac5317367, type: 3}
+  - {fileID: 7641486699669872689, guid: 99f265db39a631d49a90c11588da7942, type: 3}
+  - {fileID: 7641486699669872689, guid: f74132a1e1dc020419c43d8e117f676c, type: 3}
+  - {fileID: 7641486699669872689, guid: 55447a31d49f0144cbb72dc31f50a60f, type: 3}

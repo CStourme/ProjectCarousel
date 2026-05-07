@@ -1233,7 +1233,7 @@ MonoBehaviour:
   _isAutoActive: 0
   autoRadius: 10
   autoHeight: 3
-  autoSpeed: 0.1
+  autoSpeed: 0.35
   zoomSpeed: 0.3
   minFOV: 5
   maxFOV: 70
@@ -1980,13 +1980,13 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e79ac3e4223d6bd4a9475fd59d84ec4b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: HandheldCamera.Runtime::CameraController.Runtime.HandheldCamera
-  octaves: 4
-  noiseSpeed: 0.75
+  m_EditorClassIdentifier: HandheldCamera.Runtime::CameraController.Runtime.HandheldCameraFBm
+  octaves: 3
+  noiseSpeed: 0.4
   lacunarity: 2
-  persistence: 0.5
-  positionAmount: {x: 0.05, y: 0.05, z: 0.05}
-  rotationAmount: {x: 0.5, y: 0.5, z: 0.5}
+  persistence: 0.6
+  positionAmount: {x: 0.06, y: 0.03, z: 0.06}
+  rotationAmount: {x: 0.9, y: 0.5, z: 0.4}
 --- !u!1 &7160913909718829748
 GameObject:
   m_ObjectHideFlags: 0
