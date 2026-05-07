@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Runtime.Bunyamin;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
