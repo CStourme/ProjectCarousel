@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7963873568519608432}
   - component: {fileID: 3029248914469424408}
   - component: {fileID: 6821703062841898295}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RR_Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 8591335938713389005}
   - component: {fileID: 8946781471210230028}
   - component: {fileID: 3595459612190043113}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: F_Hood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -263,7 +263,7 @@ GameObject:
   - component: {fileID: 4317619688281568547}
   - component: {fileID: 529088780652596258}
   - component: {fileID: 3299147351573275501}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RR_wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -388,7 +388,7 @@ GameObject:
   - component: {fileID: 3647714154665823981}
   - component: {fileID: 6481504859794354817}
   - component: {fileID: 28365918989307103}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Body_car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -513,7 +513,7 @@ GameObject:
   - component: {fileID: 5147206542738311888}
   - component: {fileID: 8690475086105155350}
   - component: {fileID: 5159755981486644691}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: R_Mirror
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -638,7 +638,7 @@ GameObject:
   - component: {fileID: 8376332435343600972}
   - component: {fileID: 6362297782681154631}
   - component: {fileID: 6550428160682826537}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: R_Hood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -763,7 +763,7 @@ GameObject:
   - component: {fileID: 6843932545367682113}
   - component: {fileID: 433752463460916442}
   - component: {fileID: 6924001463867171889}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FR_wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -888,7 +888,7 @@ GameObject:
   - component: {fileID: 59632595928382435}
   - component: {fileID: 1445736513214169639}
   - component: {fileID: 122696177488283445}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RL_wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1009,7 +1009,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 901665842541130596}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Lights_colliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1047,7 +1047,9 @@ GameObject:
   - component: {fileID: 7254172522639695267}
   - component: {fileID: 5159814160094648339}
   - component: {fileID: 4329014438452758038}
-  m_Layer: 0
+  - component: {fileID: 5022782975063393313}
+  - component: {fileID: 5011666763786923845}
+  m_Layer: 2
   m_Name: MainCamera_Manuel
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -1078,8 +1080,8 @@ Camera:
   m_GameObject: {fileID: 2829489565537357863}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.122641504, g: 0.122641504, b: 0.122641504, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1151,7 +1153,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -1172,6 +1174,44 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &5022782975063393313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2829489565537357863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b8442ecf0c9f0040b965fa5f32d0f59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FixPoint.Runtime::FixPoint.Runtime.RaycastTimer
+  m_endTimer: 0
+  obstaclemask:
+    serializedVersion: 2
+    m_Bits: 1
+  layermask:
+    serializedVersion: 2
+    m_Bits: 72
+  scanSlider: {fileID: 0}
+--- !u!114 &5011666763786923845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2829489565537357863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 787afb15df775dd498f07fe28c2d6f85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FixPoint.Runtime::FixPoint.Runtime.FixPoint
+  obstaclemask:
+    serializedVersion: 2
+    m_Bits: 129
+  layermask:
+    serializedVersion: 2
+    m_Bits: 72
 --- !u!1 &3853187678912644279
 GameObject:
   m_ObjectHideFlags: 0
@@ -1183,7 +1223,7 @@ GameObject:
   - component: {fileID: 6892918205101931619}
   - component: {fileID: 4522702016146215584}
   - component: {fileID: 7045248319087981732}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CameraManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1276,7 +1316,7 @@ GameObject:
   - component: {fileID: 6247761919706527915}
   - component: {fileID: 4545673950365415528}
   - component: {fileID: 8999662907215516204}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RL_Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1397,7 +1437,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8778942013000433605}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cameras_CommonTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1428,7 +1468,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5057067483380856841}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Wheels_colliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1467,7 +1507,7 @@ GameObject:
   - component: {fileID: 6836157000253549172}
   - component: {fileID: 8974725146548390439}
   - component: {fileID: 139566099897553922}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FL_wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1592,7 +1632,7 @@ GameObject:
   - component: {fileID: 5555499380723853165}
   - component: {fileID: 4904344807675767685}
   - component: {fileID: 8617525786391536702}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FL_Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1717,7 +1757,7 @@ GameObject:
   - component: {fileID: 5847423422419345979}
   - component: {fileID: 1810725311303671052}
   - component: {fileID: 6238164506089128450}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: L_Mirror
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1838,7 +1878,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1848294848801412193}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Body_colliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1877,7 +1917,8 @@ GameObject:
   - component: {fileID: 335886354031834675}
   - component: {fileID: 1040649335891036317}
   - component: {fileID: 12501306700968411}
-  m_Layer: 0
+  - component: {fileID: 425460191644789979}
+  m_Layer: 2
   m_Name: Camera_Auto
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -2012,6 +2053,14 @@ MonoBehaviour:
   persistence: 0.6
   positionAmount: {x: 0.06, y: 0.03, z: 0.06}
   rotationAmount: {x: 0.9, y: 0.5, z: 0.4}
+--- !u!81 &425460191644789979
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6574168814023221912}
+  m_Enabled: 1
 --- !u!1 &7160913909718829748
 GameObject:
   m_ObjectHideFlags: 0
@@ -2025,7 +2074,7 @@ GameObject:
   - component: {fileID: 2116122886222516413}
   - component: {fileID: 2345794552011269383}
   - component: {fileID: 9151514174241274688}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FR_Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2146,7 +2195,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3919441221721148342}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Pivot_MainCamera_Manuel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2178,7 +2227,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5704016569921172713}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CAM_TARGETS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
