@@ -5,85 +5,81 @@ namespace CameraController.Runtime
 {
     public class CameraTransition : MonoBehaviour
     {
-        // "Je garde mon menu déroulant pour choisir le style dans l'inspecteur."
-        public enum TransitionType { FadeAlpha, SlideY }
-
-        // "Je crée les étapes de ma machine à états pour savoir où j'en suis dans le temps."
+        public enum TransitionType { FadeAlpha, Slide }
         private enum TransitionState { Idle, MovingOut, MovingIn }
 
         [Header("Réglages de l'Effet")]
         [SerializeField] private TransitionType _type = TransitionType.FadeAlpha;
         
-        [Tooltip("Durée totale de la transition (FadeOut + FadeIn).")]
+        [Tooltip("Durée totale (Fermeture + Ouverture).")]
         public float totalDuration = 1.0f;
         
-        [Tooltip("Couleur du panneau de transition.")]
+        [Tooltip("Utilisé UNIQUEMENT en mode FadeAlpha.")]
         public Color transitionColor = Color.black;
 
         [Header("Références UI")]
-        public Image transitionImage;
+        public Image imageBottom;
+        public Image imageTop;
 
-        // --- VARIABLES DE CONTRÔLE INTERNE ---
-        private TransitionState _currentState = TransitionState.Idle; // "Mon état actuel."
-        private float _timer = 0f;                                    // "Mon chronomètre manuel."
-        private RectTransform _imageRect;                             // "Pour le mouvement Y."
-        private System.Action _onMidPointAction;                      // "L'action (le switch) à faire au milieu."
+        // --- NOUVEAU : OVERRIDE DE COULEUR POUR LES BITMAPS ---
+        [Header("Override de Couleur (Mode Slide)")]
+        [Tooltip("Couleur appliquée aux pixels de la texture du bas/gauche.")]
+        public Color colorBottomOverride = Color.white;
+        [Tooltip("Couleur appliquée aux pixels de la texture du haut/droite.")]
+        public Color colorTopOverride = Color.white;
+
+        [Header("Positions (Mode Slide)")]
+        public Vector2 bottomStartPos = new Vector2(0, -540);
+        public Vector2 bottomEndPos = new Vector2(0, 540);
+        [Space]
+        public Vector2 topStartPos = new Vector2(0, 540);
+        public Vector2 topEndPos = new Vector2(0, -540);
+
+        private TransitionState _currentState = TransitionState.Idle;
+        private float _timer = 0f;
+        private RectTransform _rectBottom;
+        private RectTransform _rectTop;
+        private System.Action _onMidPointAction;
 
         private void Awake()
         {
-            // "J'initialise mes composants comme avant."
-            if (transitionImage != null)
-            {
-                _imageRect = transitionImage.GetComponent<RectTransform>();
-                transitionImage.color = transitionColor;
-                ResetUI();
-            }
+            // "Je récupère les composants de mes images."
+            if (imageBottom != null) _rectBottom = imageBottom.GetComponent<RectTransform>();
+            if (imageTop != null) _rectTop = imageTop.GetComponent<RectTransform>();
+
+            // "Initialisation : je prépare les couleurs et je masque tout."
+            ResetUI();
         }
 
         private void Update()
         {
-            // "Si je suis au repos (Idle), je ne fais rien du tout pour économiser de la ressource."
+            // "Si je ne fais rien, je sors."
             if (_currentState == TransitionState.Idle) return;
 
-            // "Je fais avancer mon chronomètre en ajoutant le temps écoulé depuis la dernière image."
+            // "Progression du chrono."
             _timer += Time.deltaTime;
-
-            // "Je calcule la durée d'une demi-transition."
             float halfDuration = totalDuration / 2f;
 
             if (_currentState == TransitionState.MovingOut)
             {
-                // "--- PHASE 1 : ON CACHE L'ÉCRAN ---"
-                // "Je calcule un ratio de progression entre 0 et 1 pour la première moitié du temps."
+                // "PHASE 1 : FERMETURE."
                 float progress = Mathf.Clamp01(_timer / halfDuration);
-                
                 ApplyEffectLogic(progress, true);
 
-                // "Si mon chrono dépasse la moitié de la durée totale..."
                 if (_timer >= halfDuration)
                 {
-                    // "1. Je m'assure d'être parfaitement à l'état 'caché' (noir total ou centré)."
-                    ApplyEffectLogic(1f, true);
-
-                    // "2. J'EXÉCUTE LE SWITCH DE CAMÉRA (Le moment critique !)."
-                    _onMidPointAction?.Invoke();
-
-                    // "3. Je passe à la phase suivante : On révèle l'écran."
+                    ApplyEffectLogic(1f, true); 
+                    _onMidPointAction?.Invoke(); // "Switch caméra ici."
                     _currentState = TransitionState.MovingIn;
-                    
-                    // "4. Je remets mon chrono à zéro pour la deuxième phase."
                     _timer = 0f;
                 }
             }
             else if (_currentState == TransitionState.MovingIn)
             {
-                // "--- PHASE 2 : ON RÉVÈLE L'ÉCRAN ---"
-                // "Je calcule le ratio de progression pour la seconde moitié."
+                // "PHASE 2 : OUVERTURE."
                 float progress = Mathf.Clamp01(_timer / halfDuration);
-
                 ApplyEffectLogic(progress, false);
 
-                // "Si mon chrono dépasse la deuxième moitié, c'est fini."
                 if (_timer >= halfDuration)
                 {
                     _currentState = TransitionState.Idle;
@@ -92,55 +88,78 @@ namespace CameraController.Runtime
             }
         }
 
-        // "Cette fonction centralise la transformation visuelle pour éviter de répéter du code."
         private void ApplyEffectLogic(float progress, bool isMovingOut)
         {
             if (_type == TransitionType.FadeAlpha)
             {
-                // "Si je sors (Out), je vais de 0 vers 1. Si je rentre (In), je vais de 1 vers 0."
+                // "MODE FADE : J'utilise la couleur 'transitionColor' pour les deux."
                 float startAlpha = isMovingOut ? 0f : 1f;
                 float endAlpha = isMovingOut ? 1f : 0f;
-                SetAlpha(Mathf.Lerp(startAlpha, endAlpha, progress));
+                float currentAlpha = Mathf.Lerp(startAlpha, endAlpha, progress);
+                
+                SetColorAndAlpha(imageBottom, transitionColor, currentAlpha);
+                SetColorAndAlpha(imageTop, transitionColor, currentAlpha);
             }
             else
             {
-                // "Si je sors (Out), je monte du bas vers le centre (-540 vers 0)."
-                // "Si je rentre (In), je pars du centre vers le haut (0 vers 540)."
-                float startY = isMovingOut ? -540f : 0f;
-                float endY = isMovingOut ? 0f : 540f;
-                float currentY = Mathf.Lerp(startY, endY, progress);
-                _imageRect.anchoredPosition = new Vector2(0, currentY);
+                // "MODE SLIDE : J'applique les couleurs d'override spécifiques à chaque image."
+                // "Je force l'alpha à 1 car l'opacité doit être totale pour masquer le switch."
+                SetColorAndAlpha(imageBottom, colorBottomOverride, 1f);
+                SetColorAndAlpha(imageTop, colorTopOverride, 1f);
+
+                // "Calcul des trajectoires Vector2."
+                Vector2 startB = isMovingOut ? bottomStartPos : Vector2.zero;
+                Vector2 endB = isMovingOut ? Vector2.zero : bottomEndPos;
+                if (_rectBottom != null) _rectBottom.anchoredPosition = Vector2.Lerp(startB, endB, progress);
+
+                Vector2 startT = isMovingOut ? topStartPos : Vector2.zero;
+                Vector2 endT = isMovingOut ? Vector2.zero : topEndPos;
+                if (_rectTop != null) _rectTop.anchoredPosition = Vector2.Lerp(startT, endT, progress);
             }
         }
 
-        // "La porte d'entrée appelée par le CameraController."
         public void StartTransition(System.Action onMidPointReached)
         {
-            // "Si une transition tourne déjà, j'ignore la demande."
             if (_currentState != TransitionState.Idle) return;
-
-            // "Je stocke l'action de switch pour plus tard."
             _onMidPointAction = onMidPointReached;
-
-            // "Je lance la machine à états et je remets le chrono à zéro."
             _currentState = TransitionState.MovingOut;
             _timer = 0f;
         }
 
         private void ResetUI()
         {
-            if (_type == TransitionType.FadeAlpha)
-                SetAlpha(0f);
+            // "Au repos, j'applique les couleurs de base pour que l'initialisation soit propre."
+            if (_type == TransitionType.Slide)
+            {
+                SetColorAndAlpha(imageBottom, colorBottomOverride, 1f);
+                SetColorAndAlpha(imageTop, colorTopOverride, 1f);
+            }
             else
-                _imageRect.anchoredPosition = new Vector2(0, -540);
+            {
+                SetColorAndAlpha(imageBottom, transitionColor, 0f);
+                SetColorAndAlpha(imageTop, transitionColor, 0f);
+            }
+
+            if (_rectBottom != null) _rectBottom.anchoredPosition = bottomStartPos;
+            if (_rectTop != null) _rectTop.anchoredPosition = topStartPos;
         }
 
-        private void SetAlpha(float alpha)
+        // "--- NOUVELLE MÉTHODE PÉDAGOGIQUE ---"
+        // "Cette fonction permet de changer à la fois la teinte ET la transparence d'un coup."
+        private void SetColorAndAlpha(Image img, Color targetColor, float alpha)
         {
-            if (transitionImage == null) return;
-            Color c = transitionImage.color;
-            c.a = alpha;
-            transitionImage.color = c;
+            if (img == null) return;
+            
+            // "Je crée une copie de la couleur cible."
+            Color finalColor = targetColor;
+            
+            // "J'injecte la valeur d'alpha demandée par la machine à états."
+            finalColor.a = alpha;
+            
+            // "J'applique cette couleur finale à l'image."
+            // "Si l'image a une texture bitmap blanche, elle prendra exactement cette couleur."
+            // "Si l'image a déjà des couleurs, elle sera teintée (multipliée) par celle-ci."
+            img.color = finalColor;
         }
     }
 }

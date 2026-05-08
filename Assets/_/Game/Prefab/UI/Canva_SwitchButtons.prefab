@@ -1059,6 +1059,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &5575163638126534481
+--- !u!1 &5190233911656787694
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1071,12 +1072,18 @@ GameObject:
   - component: {fileID: 8934582995679384840}
   m_Layer: 5
   m_Name: Background
+  - component: {fileID: 6602485932980339951}
+  - component: {fileID: 1075032043891790495}
+  - component: {fileID: 7260998152543807186}
+  m_Layer: 5
+  m_Name: fadeIn_fadeOut_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!224 &6980377259027665536
+--- !u!224 &6602485932980339951
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1084,6 +1091,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5575163638126534481}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_GameObject: {fileID: 5190233911656787694}
+  m_LocalRotation: {x: -0, y: -0, z: -0.38268343, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1096,6 +1105,14 @@ RectTransform:
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1172416665594026416
+  m_Father: {fileID: 7075966514366791742}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -790, y: -790}
+  m_SizeDelta: {x: 1100, y: 1140}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1075032043891790495
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1104,12 +1121,16 @@ CanvasRenderer:
   m_GameObject: {fileID: 5575163638126534481}
   m_CullTransparentMesh: 1
 --- !u!114 &8934582995679384840
+  m_GameObject: {fileID: 5190233911656787694}
+  m_CullTransparentMesh: 1
+--- !u!114 &7260998152543807186
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5575163638126534481}
+  m_GameObject: {fileID: 5190233911656787694}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -1118,6 +1139,8 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Color: {r: 1, g: 0.78354603, b: 0, a: 1}
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1528,6 +1551,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: fed44b3da6a1a0045a38487e96213bdf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1578,6 +1602,7 @@ RectTransform:
   - {fileID: 7862865019863158878}
   - {fileID: 1698595249421463796}
   - {fileID: 3372779416314253558}
+  - {fileID: 6602485932980339951}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1673,7 +1698,7 @@ GameObject:
   - component: {fileID: 4713064484301614054}
   - component: {fileID: 8451052838492563918}
   m_Layer: 5
-  m_Name: fadeIn_fadeOut
+  m_Name: fadeIn_fadeOut_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1686,7 +1711,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8371728932677509503}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.38268343, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1697,6 +1722,8 @@ RectTransform:
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
+  m_AnchoredPosition: {x: 790, y: 790}
+  m_SizeDelta: {x: 1100, y: 1140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4713064484301614054
 CanvasRenderer:
@@ -1719,14 +1746,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_Color: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 8e2cd75359be4524f8c19fb35bef2864, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
