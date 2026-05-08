@@ -669,7 +669,7 @@ PrefabInstance:
     - target: {fileID: 1138155578508863739, guid: f74132a1e1dc020419c43d8e117f676c, type: 3}
       propertyPath: _raycastTimer
       value: 
-      objectReference: {fileID: 2079245380}
+      objectReference: {fileID: 2079245386}
     - target: {fileID: 7573140723460612561, guid: f74132a1e1dc020419c43d8e117f676c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -713,6 +713,10 @@ PrefabInstance:
     - target: {fileID: 7641486699669872689, guid: f74132a1e1dc020419c43d8e117f676c, type: 3}
       propertyPath: m_Name
       value: Voiture3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7641486699669872689, guid: f74132a1e1dc020419c43d8e117f676c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1266,7 +1270,7 @@ PrefabInstance:
     - target: {fileID: 1138155578508863739, guid: 99f265db39a631d49a90c11588da7942, type: 3}
       propertyPath: _raycastTimer
       value: 
-      objectReference: {fileID: 2079245380}
+      objectReference: {fileID: 2079245386}
     - target: {fileID: 7264965413517133427, guid: 99f265db39a631d49a90c11588da7942, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.524
@@ -1325,7 +1329,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7641486699669872689, guid: 99f265db39a631d49a90c11588da7942, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8212487436615081408, guid: 99f265db39a631d49a90c11588da7942, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1518,6 +1522,22 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5011666763786923845, guid: 91df1546e96a2b14ebe38ea7f55ab415, type: 3}
+      propertyPath: layermask.m_Bits
+      value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 5022782975063393313, guid: 91df1546e96a2b14ebe38ea7f55ab415, type: 3}
+      propertyPath: scanSlider
+      value: 
+      objectReference: {fileID: 92958922}
+    - target: {fileID: 5022782975063393313, guid: 91df1546e96a2b14ebe38ea7f55ab415, type: 3}
+      propertyPath: targetMask.m_Bits
+      value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 5022782975063393313, guid: 91df1546e96a2b14ebe38ea7f55ab415, type: 3}
+      propertyPath: obstacleMask.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5808618111340168722, guid: 91df1546e96a2b14ebe38ea7f55ab415, type: 3}
       propertyPath: m_Layer
       value: 2
@@ -1609,13 +1629,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2829489565537357863, guid: 91df1546e96a2b14ebe38ea7f55ab415, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2079245380}
-    - targetCorrespondingSourceObject: {fileID: 2829489565537357863, guid: 91df1546e96a2b14ebe38ea7f55ab415, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2079245379}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91df1546e96a2b14ebe38ea7f55ab415, type: 3}
 --- !u!114 &1114955221 stripped
 MonoBehaviour:
@@ -2061,7 +2075,7 @@ PrefabInstance:
     - target: {fileID: 1138155578508863739, guid: 55447a31d49f0144cbb72dc31f50a60f, type: 3}
       propertyPath: _raycastTimer
       value: 
-      objectReference: {fileID: 2079245380}
+      objectReference: {fileID: 2079245386}
     - target: {fileID: 7573140723460612561, guid: 55447a31d49f0144cbb72dc31f50a60f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2105,6 +2119,10 @@ PrefabInstance:
     - target: {fileID: 7641486699669872689, guid: 55447a31d49f0144cbb72dc31f50a60f, type: 3}
       propertyPath: m_Name
       value: Voiture4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7641486699669872689, guid: 55447a31d49f0144cbb72dc31f50a60f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2279,7 +2297,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 193843386848200343, guid: 91fc8ad96ab1989419f243c29dbe58b5, type: 3}
       propertyPath: m_Spacing
-      value: -200
+      value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 193843386848200343, guid: 91fc8ad96ab1989419f243c29dbe58b5, type: 3}
       propertyPath: m_ChildAlignment
@@ -2445,7 +2463,7 @@ PrefabInstance:
     - target: {fileID: 1138155578508863739, guid: 0e666b1b9ac705b47b2ceffd08ea8288, type: 3}
       propertyPath: _raycastTimer
       value: 
-      objectReference: {fileID: 2079245380}
+      objectReference: {fileID: 2079245386}
     - target: {fileID: 7264965413517133427, guid: 0e666b1b9ac705b47b2ceffd08ea8288, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.715
@@ -2562,49 +2580,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1176846942014789343, guid: 788bc7bbb4c2810478b4b63f0be659c4, type: 3}
   m_PrefabInstance: {fileID: 768521948}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2079245374 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2829489565537357863, guid: 91df1546e96a2b14ebe38ea7f55ab415, type: 3}
+--- !u!114 &2079245386 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5022782975063393313, guid: 91df1546e96a2b14ebe38ea7f55ab415, type: 3}
   m_PrefabInstance: {fileID: 1080266799}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2079245379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2079245374}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 787afb15df775dd498f07fe28c2d6f85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: FixPoint.Runtime::FixPoint.Runtime.FixPoint
-  obstaclemask:
-    serializedVersion: 2
-    m_Bits: 1
-  layermask:
-    serializedVersion: 2
-    m_Bits: 8
---- !u!114 &2079245380
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2079245374}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b8442ecf0c9f0040b965fa5f32d0f59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: FixPoint.Runtime::FixPoint.Runtime.RaycastTimer
-  m_endTimer: 0
-  obstaclemask:
-    serializedVersion: 2
-    m_Bits: 1
-  layermask:
-    serializedVersion: 2
-    m_Bits: 8
-  scanSlider: {fileID: 92958922}
 --- !u!1 &2125589792
 GameObject:
   m_ObjectHideFlags: 0
@@ -2818,7 +2804,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4377260613398903822, guid: 18c9a63947e178a45b588a59a3687e26, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -187
+      value: -350
       objectReference: {fileID: 0}
     - target: {fileID: 4377260613398903822, guid: 18c9a63947e178a45b588a59a3687e26, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2911,6 +2897,14 @@ PrefabInstance:
     - target: {fileID: 7939130252505999643, guid: 18c9a63947e178a45b588a59a3687e26, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8371728932677509503, guid: 18c9a63947e178a45b588a59a3687e26, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8451052838492563918, guid: 18c9a63947e178a45b588a59a3687e26, type: 3}
+      propertyPath: m_Color.a
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8489817560452588206, guid: 18c9a63947e178a45b588a59a3687e26, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
