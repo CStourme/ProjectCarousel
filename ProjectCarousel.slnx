@@ -1,0 +1,10 @@
+﻿<Solution>
+  <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="FocusPoint.Runtime.csproj" />
+  <Project Path="FixPoint.Runtime.csproj" />
+  <Project Path="Assembly-CSharp-Editor.csproj" />
+  <Project Path="CameraController.Runtime.csproj" />
+  <Project Path="HandheldCamera.Runtime.csproj" />
+  <Project Path="Thomas.Runtime.csproj" />
+  <Project Path="Runtime.Bunyamin.csproj" />
+</Solution>
