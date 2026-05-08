@@ -15,6 +15,7 @@ public class RandomSpawn : MonoBehaviour
 
     void Awake()
     {
+        _raycastTimer.OnScanComplete += FoundItem;
         if (!_itemFound)
         {
             SpawnItem();
@@ -23,9 +24,7 @@ public class RandomSpawn : MonoBehaviour
 
     private void Update()
     {
-        CheckItemState();
-        if (!_raycastTimer.m_endTimer) return;
-        FoundItem();
+        // CheckItemState();
     }
 
     void SpawnItem()
