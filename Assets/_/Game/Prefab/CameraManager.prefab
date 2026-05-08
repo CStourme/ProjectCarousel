@@ -1049,6 +1049,8 @@ GameObject:
   - component: {fileID: 4329014438452758038}
   - component: {fileID: 5022782975063393313}
   - component: {fileID: 5011666763786923845}
+  - component: {fileID: 3465204525049900476}
+  - component: {fileID: 6508895595158524844}
   m_Layer: 2
   m_Name: MainCamera_Manuel
   m_TagString: MainCamera
@@ -1186,13 +1188,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b8442ecf0c9f0040b965fa5f32d0f59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: FixPoint.Runtime::FixPoint.Runtime.RaycastTimer
-  m_endTimer: 0
-  obstaclemask:
+  obstacleMask:
     serializedVersion: 2
-    m_Bits: 1
-  layermask:
+    m_Bits: 0
+  targetMask:
     serializedVersion: 2
-    m_Bits: 72
+    m_Bits: 0
   scanSlider: {fileID: 0}
 --- !u!114 &5011666763786923845
 MonoBehaviour:
@@ -1212,6 +1213,43 @@ MonoBehaviour:
   layermask:
     serializedVersion: 2
     m_Bits: 72
+--- !u!114 &3465204525049900476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2829489565537357863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b8442ecf0c9f0040b965fa5f32d0f59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FixPoint.Runtime::FixPoint.Runtime.RaycastTimer
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 0
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 0
+  scanSlider: {fileID: 0}
+--- !u!114 &6508895595158524844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2829489565537357863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 787afb15df775dd498f07fe28c2d6f85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FixPoint.Runtime::FixPoint.Runtime.FixPoint
+  obstaclemask:
+    serializedVersion: 2
+    m_Bits: 1
+  layermask:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1 &3853187678912644279
 GameObject:
   m_ObjectHideFlags: 0
@@ -1300,7 +1338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: CameraTransition.Runtime::CameraController.Runtime.CameraTransition
   _type: 0
-  totalDuration: 1
+  totalDuration: 0.5
   transitionColor: {r: 0, g: 0, b: 0, a: 1}
   transitionImage: {fileID: 0}
 --- !u!1 &4163008354696232767
