@@ -2,7 +2,8 @@
     "name": "CameraController.Runtime",
     "rootNamespace": "CameraController.Runtime",
     "references": [
-        "GUID:75469ad4d38634e559750d17036d5f7c"
+        "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:c82ee68becd62024da2b0f0d129687b4"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

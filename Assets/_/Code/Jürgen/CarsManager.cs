@@ -5,7 +5,7 @@ public class CarsManager : MonoBehaviour
 {
     #region Publics
 
-    public RandomSpawner[] m_spawners;
+    public RandomSpawn[] m_spawners;
 
     public Image m_image;
 
@@ -28,7 +28,7 @@ public class CarsManager : MonoBehaviour
     {
         bool hasActiveItem = false;
 
-        foreach (RandomSpawner spawner in m_spawners)
+        foreach (RandomSpawn spawner in m_spawners)
         {
             if (spawner.IsItemActive())
             {
