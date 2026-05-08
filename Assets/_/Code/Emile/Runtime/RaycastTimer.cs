@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,83 +5,59 @@ namespace FixPoint.Runtime
 {
     public class RaycastTimer : MonoBehaviour
     {
-        #region Publics
-
-        public Action<GameObject> OnScanComplete;
-
-        #endregion
-
-
-        #region Inspector
-
-        [SerializeField] private LayerMask obstacleMask;
-        [SerializeField] private LayerMask targetMask;
+        [HideInInspector] public bool m_endTimer = false;
+        
+        [SerializeField] private LayerMask obstaclemask;
+        [SerializeField] private LayerMask layermask;
         [SerializeField] private Slider scanSlider;
+        
+        private RaycastHit hitinfo;
 
-        #endregion
-
-
-        #region Privates
-
-        private RaycastHit _hitInfo;
-
-        private float _timer;
-        private float _maxTime = 1f;
-
-        private bool _scanCompleted;
-
-        #endregion
-
-
-        #region Unity API
-
-        private void Start()
+        private float timer;
+        private float maxTime = 3f;
+        
+        
+        void Start()
         {
             scanSlider.gameObject.SetActive(false);
-            scanSlider.maxValue = _maxTime;
         }
 
-        private void Update()
+        void Update()
         {
             Vector3 direction = transform.forward;
+            if (Physics.Raycast(transform.position, direction, out hitinfo, 10f, obstaclemask)) return;
 
-            // Bloque le scan si obstacle
-            if (Physics.Raycast(transform.position, direction, out _hitInfo, 10f, obstacleMask))
-            {
-                ResetScan();
-                return;
-            }
-
-            // Vérifie si on touche un objet du layer
-            if (Physics.Raycast(transform.position, direction, out _hitInfo, 10f, targetMask))
+            if (Physics.Raycast(transform.position, direction, out hitinfo, 10f, layermask))
             {
                 scanSlider.gameObject.SetActive(true);
 
-                _timer += Time.deltaTime;
+                timer += Time.deltaTime;
 
-                scanSlider.value = _timer;
+                scanSlider.value = timer;
 
                 Debug.Log("Scan in progress");
 
-                // Déclenche UNE seule fois
-                if (_timer >= _maxTime && !_scanCompleted)
+                if (timer >= maxTime)
                 {
-                    _scanCompleted = true;
-
                     Debug.Log("Object scanned !");
-
-                    OnScanComplete?.Invoke(_hitInfo.collider.gameObject);
+                    m_endTimer = true;
                 }
 
                 Debug.DrawRay(
                     transform.position,
-                    direction * _hitInfo.distance,
+                    direction * hitinfo.distance,
                     Color.red
                 );
             }
             else
             {
-                ResetScan();
+                timer = 0;
+
+                scanSlider.value = 0;
+
+                scanSlider.gameObject.SetActive(false);
+
+                Debug.Log("No objects scanned");
 
                 Debug.DrawRay(
                     transform.position,
@@ -91,25 +66,5 @@ namespace FixPoint.Runtime
                 );
             }
         }
-
-        #endregion
-
-
-        #region Main Methods
-
-        private void ResetScan()
-        {
-            _timer = 0;
-
-            _scanCompleted = false;
-
-            scanSlider.value = 0;
-
-            scanSlider.gameObject.SetActive(false);
-
-            Debug.Log("No objects scanned");
-        }
-
-        #endregion
     }
 }
