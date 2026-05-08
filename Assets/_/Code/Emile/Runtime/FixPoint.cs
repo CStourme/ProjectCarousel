@@ -7,7 +7,7 @@ namespace FixPoint.Runtime
     {
         [SerializeField] private LayerMask obstaclemask;
         [SerializeField] private LayerMask layermask;
-        [SerializeField] private TMP_Text detectionText;
+        // [SerializeField] private TMP_Text detectionText;
 
         private RaycastHit hitinfo;
 
@@ -19,8 +19,8 @@ namespace FixPoint.Runtime
 
             if (Physics.Raycast(transform.position, direction, out hitinfo, 10f, layermask))
             {
-                detectionText.text = "Object detected : " + hitinfo.collider.name;
-                detectionText.color = Color.green;
+                // detectionText.text = "Object detected : " + hitinfo.collider.name;
+                // detectionText.color = Color.green;
 
                 Debug.Log("Object detected : " + hitinfo.collider.name);
 
@@ -32,8 +32,8 @@ namespace FixPoint.Runtime
             }
             else
             {
-                detectionText.text = "No objects detected";
-                detectionText.color = Color.red;
+                // detectionText.text = "No objects detected";
+                // detectionText.color = Color.red;
 
                 Debug.Log("No objects detected");
 
