@@ -75,6 +75,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c959b44227ca5a418b13b8002c988d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Thomas.Runtime::Thomas.Runtime.CharWord
-  m_word: CARS
+  m_word:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - DUCK
+  - LOVE
+  - KISS
+  - MISS
+  - LESS
+  - HUGE
+  - KEYS
   m_parent: {fileID: 2055167796777814002}
   m_letterPrefab: {fileID: 4549373058523467931, guid: d3be00c6c79031845afa9bb3ed30c286, type: 3}
