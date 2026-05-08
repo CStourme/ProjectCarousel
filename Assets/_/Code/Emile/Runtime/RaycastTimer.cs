@@ -5,7 +5,7 @@ namespace FixPoint.Runtime
 {
     public class RaycastTimer : MonoBehaviour
     {
-        [HideInInspector] public bool m_endTimer = false;
+        public System.Action OnScanComplete;
         
         [SerializeField] private LayerMask obstaclemask;
         [SerializeField] private LayerMask layermask;
@@ -14,7 +14,7 @@ namespace FixPoint.Runtime
         private RaycastHit hitinfo;
 
         private float timer;
-        private float maxTime = 3f;
+        private float maxTime = 1f;
         
         
         void Start()
@@ -24,7 +24,10 @@ namespace FixPoint.Runtime
 
         void Update()
         {
+            
             Vector3 direction = transform.forward;
+            
+            
             if (Physics.Raycast(transform.position, direction, out hitinfo, 10f, obstaclemask)) return;
 
             if (Physics.Raycast(transform.position, direction, out hitinfo, 10f, layermask))
@@ -40,7 +43,7 @@ namespace FixPoint.Runtime
                 if (timer >= maxTime)
                 {
                     Debug.Log("Object scanned !");
-                    m_endTimer = true;
+                    OnScanComplete?.Invoke();
                 }
 
                 Debug.DrawRay(
@@ -65,6 +68,7 @@ namespace FixPoint.Runtime
                     Color.green
                 );
             }
+            
         }
     }
 }

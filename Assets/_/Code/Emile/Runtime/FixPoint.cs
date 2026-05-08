@@ -15,9 +15,9 @@ namespace FixPoint.Runtime
         {
             Vector3 direction = transform.forward;
             
-            if (Physics.Raycast(transform.position, direction, out hitinfo, 10f, obstaclemask)) return;
+            if (Physics.Raycast(transform.position, direction, out hitinfo, 15f, obstaclemask)) return;
 
-            if (Physics.Raycast(transform.position, direction, out hitinfo, 10f, layermask))
+            if (Physics.Raycast(transform.position, direction, out hitinfo, 15f, layermask))
             {
                 // detectionText.text = "Object detected : " + hitinfo.collider.name;
                 // detectionText.color = Color.green;
