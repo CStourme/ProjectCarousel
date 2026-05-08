@@ -1829,6 +1829,7 @@ MonoBehaviour:
   - {fileID: 7264965413517133427}
   m_image: {fileID: 0}
   m_charWord: {fileID: 0}
+  _raycastTimer: {fileID: 0}
 --- !u!1 &7887364699032755576
 GameObject:
   m_ObjectHideFlags: 0
