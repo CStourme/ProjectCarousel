@@ -1182,6 +1182,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6892918205101931619}
   - component: {fileID: 4522702016146215584}
+  - component: {fileID: 7045248319087981732}
   m_Layer: 0
   m_Name: CameraManager
   m_TagString: Untagged
@@ -1235,6 +1236,8 @@ MonoBehaviour:
   autoHeight: 2.5
   autoSpeed: 0.3
   autoOrbitTiltX: 14
+  idleThreshold: 10
+  breakAutoOnActivity: 1
   dynamicFOVAmount: 15
   dynamicFOVAmountRandomness: 5
   dynamicFOVInterval: 10
@@ -1244,6 +1247,22 @@ MonoBehaviour:
   minFOV: 5
   maxFOV: 60
   currentFOV: 45
+--- !u!114 &7045248319087981732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3853187678912644279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0313247ef7b4cd24e92d22dbbbbf9f19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: CameraTransition.Runtime::CameraController.Runtime.CameraTransition
+  _type: 0
+  totalDuration: 1
+  transitionColor: {r: 0, g: 0, b: 0, a: 1}
+  transitionImage: {fileID: 0}
 --- !u!1 &4163008354696232767
 GameObject:
   m_ObjectHideFlags: 0
