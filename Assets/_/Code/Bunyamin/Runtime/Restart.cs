@@ -32,6 +32,11 @@ namespace Runtime.Bunyamin
             m_Music.mute = Mute;
         }
 
+        public void Exit()
+        {
+            Application.Quit();
+        }
+
     #endregion 
         
         
