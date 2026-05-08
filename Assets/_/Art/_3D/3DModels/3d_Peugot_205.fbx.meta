@@ -3,7 +3,42 @@ guid: a717632cb93c8e34b8e27fab85b33bf5
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Black_lastic
+    second: {fileID: 2100000, guid: d09eff244e3b43a4099a960bca4af36c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Glass
+    second: {fileID: 2100000, guid: 62abe8f963190084ab16a4d52077b34a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Orange_Light
+    second: {fileID: 2100000, guid: b61b8f1d57421314ca9839685c847486, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Red_Plastic
+    second: {fileID: 2100000, guid: 3f52086130fad1e488ca25f1b6123891, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Rubber Black
+    second: {fileID: 2100000, guid: b6592cbec11cbde4caa85f81242666a1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Steel_Metal
+    second: {fileID: 2100000, guid: 944c320eb944cf64fa6ef11b74b1cd7f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_light__yellow
+    second: {fileID: 2100000, guid: aad156300b5b7c540bb61a1093a26ae6, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
