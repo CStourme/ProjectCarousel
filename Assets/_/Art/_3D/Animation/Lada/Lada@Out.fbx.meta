@@ -1,69 +1,9 @@
 fileFormatVersion: 2
-guid: 1b8e1bf3446606342a22d0b9626060e5
+guid: e3fda9a6961abf04f8ea4ee5a5ecede4
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Car_Main
-    second: {fileID: 2100000, guid: 62a21a082aca43f40997b6b02ce513c2, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Dark_Metal
-    second: {fileID: 2100000, guid: 7fb63ed3f88928542adc0e07b22a2f78, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Hard_Plastic
-    second: {fileID: 2100000, guid: f0f3f5507bb1378439ebc5fc346327f4, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: HeadLight_Red
-    second: {fileID: 2100000, guid: ac604a259eeb629479daa60ab30e6186, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Headlight_Clear
-    second: {fileID: 2100000, guid: 259891a32b231034a893998085f5acd8, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Headlight_Orange
-    second: {fileID: 2100000, guid: ccc16fffe5af4fd499be9bd6fdbdafb2, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Joints
-    second: {fileID: 2100000, guid: 2dfdb9028fd0791429d4dd7c81829157, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Light_Metal
-    second: {fileID: 2100000, guid: 30d5053d95a9b7d46a155417d386f47f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Metal_Wheel
-    second: {fileID: 2100000, guid: d2ababa67b6729e4f8d2da89d43bacc9, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Mirror
-    second: {fileID: 2100000, guid: 1f4ef14123c55a047924b9449b369d5c, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Tyres
-    second: {fileID: 2100000, guid: 7c4076e9e8457294fae5b0cdf3a27d9f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Window
-    second: {fileID: 2100000, guid: 624dc4b5d48a6a547b1f0300c36a55f3, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -82,7 +22,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -139,7 +79,7 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
-  importAnimation: 0
+  importAnimation: 1
   humanDescription:
     serializedVersion: 3
     human: []
@@ -156,11 +96,11 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 1b8e1bf3446606342a22d0b9626060e5, type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 2
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
