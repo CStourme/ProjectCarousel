@@ -5,10 +5,12 @@ namespace FixPoint.Runtime
 {
     public class RaycastTimer : MonoBehaviour
     {
+        [HideInInspector] public bool m_endTimer = false;
+        
         [SerializeField] private LayerMask obstaclemask;
         [SerializeField] private LayerMask layermask;
         [SerializeField] private Slider scanSlider;
-
+        
         private RaycastHit hitinfo;
 
         private float timer;
@@ -38,6 +40,7 @@ namespace FixPoint.Runtime
                 if (timer >= maxTime)
                 {
                     Debug.Log("Object scanned !");
+                    m_endTimer = true;
                 }
 
                 Debug.DrawRay(

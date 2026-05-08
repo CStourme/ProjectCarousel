@@ -1,10 +1,10 @@
-using System;
+using FixPoint.Runtime;
 using Thomas.Runtime;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-public class RandomSpawner : MonoBehaviour
+public class RandomSpawn : MonoBehaviour
 {
     public GameObject itemPrefab;
     public Transform[] spawnPoints;
@@ -24,6 +24,8 @@ public class RandomSpawner : MonoBehaviour
     private void Update()
     {
         CheckItemState();
+        if (!_raycastTimer.m_endTimer) return;
+        FoundItem();
     }
 
     void SpawnItem()
@@ -80,4 +82,5 @@ public class RandomSpawner : MonoBehaviour
     private GameObject _currentItem;
     private bool _itemFound;
     private bool _wasActive;
+    [SerializeField] private RaycastTimer _raycastTimer = null;
 }
