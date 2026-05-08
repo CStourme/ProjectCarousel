@@ -2735,7 +2735,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3528041337136276252, guid: 91fc8ad96ab1989419f243c29dbe58b5, type: 3}
       propertyPath: m_word.Array.size
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3528041337136276252, guid: 91fc8ad96ab1989419f243c29dbe58b5, type: 3}
       propertyPath: 'm_word.Array.data[0]'
@@ -2760,6 +2760,22 @@ PrefabInstance:
     - target: {fileID: 3528041337136276252, guid: 91fc8ad96ab1989419f243c29dbe58b5, type: 3}
       propertyPath: 'm_word.Array.data[5]'
       value: GEAR
+      objectReference: {fileID: 0}
+    - target: {fileID: 3528041337136276252, guid: 91fc8ad96ab1989419f243c29dbe58b5, type: 3}
+      propertyPath: 'm_word.Array.data[6]'
+      value: KEYS
+      objectReference: {fileID: 0}
+    - target: {fileID: 3528041337136276252, guid: 91fc8ad96ab1989419f243c29dbe58b5, type: 3}
+      propertyPath: 'm_word.Array.data[7]'
+      value: KISS
+      objectReference: {fileID: 0}
+    - target: {fileID: 3528041337136276252, guid: 91fc8ad96ab1989419f243c29dbe58b5, type: 3}
+      propertyPath: 'm_word.Array.data[8]'
+      value: LOVE
+      objectReference: {fileID: 0}
+    - target: {fileID: 3528041337136276252, guid: 91fc8ad96ab1989419f243c29dbe58b5, type: 3}
+      propertyPath: 'm_word.Array.data[9]'
+      value: BIRD
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3145,12 +3161,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b8442ecf0c9f0040b965fa5f32d0f59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: FixPoint.Runtime::FixPoint.Runtime.RaycastTimer
-  obstaclemask:
+  obstacleMask:
     serializedVersion: 2
-    m_Bits: 1
-  layermask:
+    m_Bits: 0
+  targetMask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
   scanSlider: {fileID: 92958922}
 --- !u!1 &2125589792
 GameObject:
