@@ -7,4 +7,5 @@
   <Project Path="HandheldCamera.Runtime.csproj" />
   <Project Path="Thomas.Runtime.csproj" />
   <Project Path="Runtime.Bunyamin.csproj" />
+  <Project Path="CameraTransition.Runtime.csproj" />
 </Solution>
